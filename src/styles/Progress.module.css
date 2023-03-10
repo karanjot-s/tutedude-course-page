@@ -1,0 +1,42 @@
+.progCont {
+  background-color: #eaeaea;
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 10000px;
+}
+
+.prog {
+  background-color: rgba(67, 25, 67, 0.87);
+  height: 10px;
+  position: relative;
+  border-radius: 10000px;
+}
+
+.pointer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  transform: translate(50%, -100%);
+}
+
+.numbers {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.text span {
+  font-size: 22px;
+  font-weight: 600;
+  margin-right: 0.2rem;
+}

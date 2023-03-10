@@ -1,0 +1,35 @@
+.cont {
+  flex: 1;
+}
+
+.crumbs {
+  margin: 1rem 1rem;
+  color: black;
+  opacity: 0.6;
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.video video {
+  width: 100%;
+}
+
+.videoAlt {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoAlt span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 1rem;
+  color: rgba(0, 0, 0, 0.87);
+}

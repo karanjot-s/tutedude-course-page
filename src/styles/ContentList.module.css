@@ -1,0 +1,82 @@
+.cont {
+  overflow-y: scroll;
+  margin-top: -10px;
+  padding-top: 10px;
+}
+
+.cont,
+.cont * {
+  transition: 0.25s;
+}
+
+.topic_head {
+  position: relative;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.topic_info {
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 1rem;
+}
+
+.topic_info span {
+  border-right: 1px solid rgba(0, 0, 0, 0.6);
+  padding-right: 0.8rem;
+}
+
+.topic_info span + span {
+  border-right: none;
+  padding-left: 0.8rem;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-100%) rotate(0deg);
+}
+
+.arrow.rotate {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.topic + .topic {
+  border-top: 1px solid rgba(0, 0, 0, 0.242);
+}
+
+.topic h2 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #431943;
+  opacity: 0.87;
+}
+
+.lecture {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+}
+
+.lecture h3 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  opacity: 0.87;
+}
+
+.lecture div div {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.lecture span {
+  opacity: 0.6;
+}
