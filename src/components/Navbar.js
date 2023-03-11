@@ -9,12 +9,13 @@ const Navbar = () => {
     { text: "Chat with Mentor", link: "#chatraChatExpanded" },
   ];
   const [active, setActive] = useState(1);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className={styles.container}>
       <img src="/assets/logo.png" alt="TuteDude" />
 
-      <div className={styles.nav}>
+      <div className={`${styles.nav} ${open ? styles.show : ""}`}>
         <div className={styles.links}>
           {links.map((link, ind) => (
             <span key={ind} className={active === ind ? styles.active : ""}>
@@ -49,6 +50,14 @@ const Navbar = () => {
             />
           </svg>
         </div>
+      </div>
+      <div
+        className={styles.navIconCont}
+        onClick={() => {
+          setOpen((old) => !old);
+        }}
+      >
+        <div className={`${styles.navIcon} ${open ? styles.show : ""}`} />
       </div>
     </div>
   );

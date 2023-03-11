@@ -62,3 +62,84 @@
   cursor: pointer;
   gap: 0.5rem;
 }
+
+.navIcon {
+  display: none;
+  width: 40px;
+  height: 6px;
+  background: rgba(128, 0, 128, 1);
+  border-radius: 100px;
+  position: relative;
+  /* top: 12px; */
+  margin: auto;
+  transition: 0.25s;
+  top: 12px;
+}
+.navIcon::before,
+.navIcon::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  background: rgba(128, 0, 128, 1);
+  border-radius: 100px;
+  bottom: -12px;
+  transition: 0.2s;
+}
+.navIcon::after {
+  top: -12px;
+}
+
+.navIconCont {
+  margin: auto 0;
+  cursor: pointer;
+  height: 36px;
+  display: none;
+}
+
+@media only screen and (max-width: 730px) {
+  .container {
+    position: relative;
+  }
+
+  .navIconCont {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    background: white;
+    flex-flow: column;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+  }
+
+  .nav .links {
+    flex-flow: column;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+
+  .navIcon {
+    display: block;
+  }
+
+  .navIcon.show {
+    background: rgba(128, 0, 128, 0);
+  }
+
+  .navIcon.show::before {
+    transform: rotate(45deg) translate(0%, -275%);
+  }
+
+  .navIcon.show::after {
+    transform: rotate(-45deg) translate(0%, 275%);
+  }
+}

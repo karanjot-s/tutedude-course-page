@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/VideoCont.module.css";
 
-const VideoCont = () => {
+const VideoCont = ({ src, main, sub }) => {
   const [noVid, setNoVid] = useState(false);
-  const [vidSrc, setVidSrc] = useState("temp.mp4");
   return (
     <div className={styles.cont}>
       <div className={styles.crumbs}>
@@ -11,7 +10,20 @@ const VideoCont = () => {
         1. Welcome to Android
       </div>
       <div className={styles.video}>
+        {main ? (
+          <div className={styles.hover}>
+            <h2>
+              Module {main.no}. {main.title}
+            </h2>
+            <h3>
+              {sub.no}. {sub.title}
+            </h3>
+          </div>
+        ) : (
+          ""
+        )}
         <video
+          key={src}
           style={{ display: noVid ? "none" : "block" }}
           controls
           preload="metadata"
@@ -20,10 +32,10 @@ const VideoCont = () => {
           }}
           onCanPlay={() => {
             setNoVid(false);
-            console.log("hllos");
+            // console.log("hllos");
           }}
         >
-          <source src={vidSrc} type="video/mp4"></source>
+          <source src={src} type="video/mp4"></source>
         </video>
         {noVid ? (
           <div className={styles.videoAlt}>

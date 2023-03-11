@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/ContentList.module.css";
 
-const ContentListItem = ({ topic, ind }) => {
+const ContentListItem = ({ topic, ind, playing, setPlaying }) => {
   const completed = topic.lectures.filter((l) => l.completed);
   const [open, setOpen] = useState(false);
   return (
@@ -37,17 +37,45 @@ const ContentListItem = ({ topic, ind }) => {
       </div>
       <div hidden={!open}>
         {topic.lectures.map((lecture, i) => (
-          <LectureItem key={i} lecture={lecture} i={i} />
+          <LectureItem
+            key={i}
+            lecture={lecture}
+            i={i}
+            playing={playing && playing[0] === ind && playing[1] === i}
+            setPlaying={() => {
+              setPlaying([ind, i]);
+            }}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-const LectureItem = ({ lecture, i }) => {
+const LectureItem = ({ lecture, i, playing, setPlaying }) => {
   const [watched, setWatched] = useState(lecture.completed);
   return (
-    <div className={styles.lecture}>
+    <div className={`${styles.lecture} ${playing ? styles.active : ""}`}>
+      <div className={styles.playing}>
+        <span>Playing</span>
+        <div style={{ width: "18px" }}>
+          <div>
+            <svg
+              style={{ minWidth: "18px" }}
+              width="18"
+              height="17"
+              viewBox="0 0 18 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect y="5" width="3" height="8" rx="1.5" fill="white" />
+              <rect x="5" y="3" width="3" height="11" rx="1.5" fill="white" />
+              <rect x="10" y="2" width="3" height="14" rx="1.5" fill="white" />
+              <rect x="15" width="3" height="17" rx="1.5" fill="white" />
+            </svg>
+          </div>
+        </div>
+      </div>
       <input
         type="checkbox"
         checked={watched}
@@ -55,7 +83,12 @@ const LectureItem = ({ lecture, i }) => {
           setWatched(e.target.checked);
         }}
       />
-      <div>
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          setPlaying();
+        }}
+      >
         <h3>
           {i + 1}. {lecture.title}
         </h3>

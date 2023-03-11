@@ -57,6 +57,11 @@
   display: flex;
   gap: 1rem;
   padding: 1rem 0.5rem;
+  position: relative;
+}
+
+.lecture.active {
+  padding-right: 100px;
 }
 
 .lecture h3 {
@@ -79,4 +84,59 @@
 
 .lecture span {
   opacity: 0.6;
+}
+
+.playing {
+  position: absolute;
+  right: 0;
+  background-color: rgb(123, 123, 123);
+  padding: 0.5rem 1rem;
+  border-radius: 50px 0px 0px 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  z-index: 2;
+}
+
+.playing div div {
+  animation: anim 0.5s infinite;
+  overflow: hidden;
+  /* width: 6px; */
+}
+
+.lecture.active .playing {
+  display: flex;
+}
+
+@keyframes anim {
+  0% {
+    width: 3px;
+  }
+  24% {
+    width: 3px;
+  }
+  25% {
+    width: 9px;
+  }
+  49% {
+    width: 9px;
+  }
+  50% {
+    width: 14px;
+  }
+  74% {
+    width: 14px;
+  }
+  75% {
+    width: 19px;
+  }
+  100% {
+    width: 19px;
+  }
+}
+
+.playing span {
+  color: white;
+  opacity: 1;
 }

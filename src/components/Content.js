@@ -5,7 +5,7 @@ import styles from "../styles/Content.module.css";
 import ContentList from "./ContentList";
 import Progress from "./Progress";
 
-const Content = () => {
+const Content = ({ data, playing, setPlaying }) => {
   const percentage = 66;
   const days = {
     min: 0,
@@ -33,7 +33,7 @@ const Content = () => {
           <span>Course Progress</span>
         </div>
       </header>
-      <ContentList />
+      <ContentList data={data} playing={playing} setPlaying={setPlaying} />
     </div>
   );
 };

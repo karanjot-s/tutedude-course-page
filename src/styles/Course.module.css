@@ -1,0 +1,11 @@
+.cont {
+  display: flex;
+  height: 100%;
+  flex: 1;
+}
+
+@media only screen and (max-width: 900px) {
+  .cont {
+    flex-flow: column;
+  }
+}
