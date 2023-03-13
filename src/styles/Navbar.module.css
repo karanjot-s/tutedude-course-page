@@ -39,6 +39,10 @@
   border-radius: 10000px;
 }
 
+.profile {
+  text-decoration: none;
+}
+
 .links span a,
 .profile span {
   font-style: normal;

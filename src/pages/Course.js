@@ -224,6 +224,7 @@ const Course = () => {
         main={
           playing ? { title: data[playing[0]].title, no: playing[0] + 1 } : null
         }
+        course={"Android Development"}
         sub={
           playing
             ? {

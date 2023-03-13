@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/MentorButton.module.css";
 
 const MentorButton = () => {
+  const [chakraInit, setChakraInit] = useState(false);
+
+  useEffect(() => {
+    initChakra();
+    // eslint-disable-next-line
+  }, []);
+
+  function initChakra(name, email) {
+    if (chakraInit) return;
+    (function (d, w, c) {
+      w.ChatraID = process.env.REACT_APP_CHAKRA_ID;
+      var s = d.createElement("script");
+      w[c] =
+        w[c] ||
+        function () {
+          (w[c].q = w[c].q || []).push(arguments);
+        };
+      s.async = true;
+      s.src = "https://call.chatra.io/chatra.js";
+      if (d.head) d.head.appendChild(s);
+    })(document, window, "Chatra");
+    window.ChatraIntegration = {
+      /* main properties */
+      name: name,
+      email: email,
+    };
+    setChakraInit(true);
+  }
+
   return (
     <button className={styles.btn}>
       <svg

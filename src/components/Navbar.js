@@ -30,7 +30,7 @@ const Navbar = () => {
             </span>
           ))}
         </div>
-        <div className={styles.profile}>
+        <a href="/#" className={styles.profile}>
           <img
             className={styles.profile_icon}
             src={`/assets/icons/profile.svg`}
@@ -49,7 +49,7 @@ const Navbar = () => {
               fill="#666666"
             />
           </svg>
-        </div>
+        </a>
       </div>
       <div
         className={styles.navIconCont}

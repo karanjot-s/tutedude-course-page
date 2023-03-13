@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import styles from "../styles/VideoCont.module.css";
 
-const VideoCont = ({ src, main, sub }) => {
+const VideoCont = ({ src, main, sub, course }) => {
   const [noVid, setNoVid] = useState(false);
   return (
     <div className={styles.cont}>
       <div className={styles.crumbs}>
-        Android Development &gt; Module 1 : Introduction to Android Studio &gt;
-        1. Welcome to Android
+        {course} &gt; Module {main.no}. {main.title} &gt;
+        {sub.no}. {sub.title}
       </div>
+      <div className={styles.course}>{course}</div>
       <div className={styles.video}>
         {main ? (
           <div className={styles.hover}>
