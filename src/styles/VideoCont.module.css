@@ -69,7 +69,21 @@
   opacity: 1;
 }
 
+.course {
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 48px;
+
+  color: #431943;
+  margin: 1rem 0;
+  display: none;
+}
+
 @media only screen and (max-width: 900px) {
+  .course {
+    display: block;
+  }
+
   .crumbs {
     margin: 1rem 0;
   }
@@ -83,13 +97,4 @@
     border-radius: 10px;
     box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.12);
   }
-}
-
-.course {
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 48px;
-
-  color: #431943;
-  margin: 1rem 0;
 }

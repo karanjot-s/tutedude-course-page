@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/MentorButton.module.css";
+import Cookies from "cookies";
 
 const MentorButton = () => {
   const [chakraInit, setChakraInit] = useState(false);
@@ -9,7 +10,9 @@ const MentorButton = () => {
     // eslint-disable-next-line
   }, []);
 
-  function initChakra(name, email) {
+  function initChakra() {
+    const email = Cookies.get("user_email");
+    const name = Cookies.get("user_name");
     if (chakraInit) return;
     (function (d, w, c) {
       w.ChatraID = process.env.REACT_APP_CHAKRA_ID;
