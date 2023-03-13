@@ -6,8 +6,10 @@ const VideoCont = ({ src, main, sub, course }) => {
   return (
     <div className={styles.cont}>
       <div className={styles.crumbs}>
-        {course} &gt; Module {main.no}. {main.title} &gt;
-        {sub.no}. {sub.title}
+        {course}{" "}
+        {main
+          ? ` > Module ${main.no}. ${main.title} > ${sub.no}. ${sub.title}`
+          : ""}
       </div>
       <div className={styles.course}>{course}</div>
       <div className={styles.video}>
