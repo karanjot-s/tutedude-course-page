@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../styles/ContentList.module.css";
 
 const ContentListItem = ({ topic, ind, playing, setPlaying }) => {
-  const completed = topic.lectures.filter((l) => l.completed);
+  const completed = topic.section_lectures.filter((l) => l.completed);
   const [open, setOpen] = useState(false);
   return (
     <div className={styles.topic}>
@@ -13,12 +13,12 @@ const ContentListItem = ({ topic, ind, playing, setPlaying }) => {
         }}
       >
         <h2>
-          Module {ind + 1} : {topic.title}
+          Module {topic.section_no} : {topic.section_name}
         </h2>
         <div className={styles.topic_info}>
-          <span>{topic.time}</span>
+          <span>{topic.time ? topic.time : ""}</span>
           <span>
-            {completed.length} / {topic.lectures.length} lectures
+            {completed.length} / {topic.section_lectures.length} lectures
           </span>
         </div>
         <svg
@@ -36,7 +36,7 @@ const ContentListItem = ({ topic, ind, playing, setPlaying }) => {
         </svg>
       </div>
       <div hidden={!open}>
-        {topic.lectures.map((lecture, i) => (
+        {topic.section_lectures.map((lecture, i) => (
           <LectureItem
             key={i}
             lecture={lecture}
@@ -90,7 +90,7 @@ const LectureItem = ({ lecture, i, playing, setPlaying }) => {
         }}
       >
         <h3>
-          {i + 1}. {lecture.title}
+          {i + 1}. {lecture.lecture_name}
         </h3>
         <div>
           <svg
@@ -106,7 +106,7 @@ const LectureItem = ({ lecture, i, playing, setPlaying }) => {
               fill="black"
             />
           </svg>
-          <span>{lecture.time}</span>
+          <span>{lecture.time ? lecture.time : ""}</span>
         </div>
       </div>
     </div>

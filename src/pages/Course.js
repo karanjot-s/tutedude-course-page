@@ -1,240 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Content from "../components/Content";
 import VideoCont from "../components/VideoCont";
 import styles from "../styles/Course.module.css";
+import axios from "axios";
 
 const Course = () => {
-  const data = [
-    {
-      title: "Introduction to Android Studio",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: true,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-    {
-      title: "Some two liner heading topics and their subtopics",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: false,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-    {
-      title: "Single line topic",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: false,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-    {
-      title: "Single line topic",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: false,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-    {
-      title: "Single line topic",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: false,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-    {
-      title: "Some two liner heading topics and their subtopics",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: false,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-    {
-      title: "Single line topic",
-      time: "52 min",
-      lectures: [
-        {
-          title: "Welcome to Android Platform",
-          time: "2 min",
-          completed: false,
-          vidSrc: "videos/temp1.mp4",
-        },
-        {
-          title: "Some two liner heading topics and their subtopics",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp2.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp3.mp4",
-        },
-        {
-          title: "Single line topic",
-          time: "4 min",
-          completed: false,
-          vidSrc: "videos/temp4.mp4",
-        },
-      ],
-    },
-  ];
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const url = "https://api.tutedude.com/lms/api/course/mern";
+    axios.get(url).then((res) => {
+      setData(res.data.data);
+    });
+  }, []);
+
   const [playing, setPlaying] = useState();
+
+  if (!data) return <>Loading...</>;
+
+  const link = playing
+    ? data.sections[playing[0]].section_lectures[playing[1]].lecture_cloud_link
+    : {};
   return (
     <div className={styles.cont}>
       <VideoCont
-        src={playing ? data[playing[0]].lectures[playing[1]].vidSrc : ".mp4"}
-        main={
-          playing ? { title: data[playing[0]].title, no: playing[0] + 1 } : null
+        src={
+          playing
+            ? `${link.domain_url}${link.bucket}/${link.folder_name}/${link.file_name}.mp4`
+            : ".mp4"
         }
-        course={"Android Development"}
+        main={
+          playing
+            ? {
+                title: data.sections[playing[0]].section_name,
+                no: data.sections[playing[0]].section_no,
+              }
+            : null
+        }
+        course={data.course_name}
         sub={
           playing
             ? {
-                title: data[playing[0]].lectures[playing[1]].title,
-                no: playing[1] + 1,
+                title:
+                  data.sections[playing[0]].section_lectures[playing[1]]
+                    .lecture_name,
+                no: data.sections[playing[0]].section_lectures[playing[1]]
+                  .lecture_no,
               }
             : null
         }
       />
-      <Content data={data} playing={playing} setPlaying={setPlaying} />
+      <Content data={data.sections} playing={playing} setPlaying={setPlaying} />
     </div>
   );
 };
