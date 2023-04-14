@@ -3,6 +3,8 @@ import Layout from "./components/Layout";
 // import MentorButton from "./components/MentorButton";
 import Course from "./pages/Course";
 import Cookies from "js-cookie";
+import { Route, RouterProvider, createRoutesFromElements } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 
 function App() {
   const [chakraInit, setChakraInit] = useState(false);
@@ -35,10 +37,15 @@ function App() {
     setChakraInit(true);
   }
   return (
-    <Layout>
-      <Course />
-      {/* <MentorButton /> */}
-    </Layout>
+    <RouterProvider
+      router={createBrowserRouter(
+        createRoutesFromElements(
+          <Route path="course" element={<Layout />}>
+            <Route path=":slug" element={<Course />} />
+          </Route>
+        )
+      )}
+    />
   );
 }
 

@@ -3,16 +3,18 @@ import Content from "../components/Content";
 import VideoCont from "../components/VideoCont";
 import styles from "../styles/Course.module.css";
 import axios from "axios";
+import { useParams } from "react-router";
 
 const Course = () => {
   const [data, setData] = useState();
+  const { slug } = useParams();
 
   useEffect(() => {
-    const url = "https://api.tutedude.com/lms/api/course/mern";
+    const url = "https://api.tutedude.com/lms/api/course/" + slug;
     axios.get(url).then((res) => {
       setData(res.data.data);
     });
-  }, []);
+  }, [slug]);
 
   const [playing, setPlaying] = useState();
 

@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { Outlet } from "react-router";
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <div
       style={{
@@ -11,7 +12,7 @@ const Layout = ({ children }) => {
       }}
     >
       <Navbar />
-      {children}
+      <Outlet />
     </div>
   );
 };
