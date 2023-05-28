@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "../styles/CourseIntro.module.css";
+import Reviews from "../components/courseintro/Reviews";
 
 const CourseIntro = () => {
   const [spotlightLeft, setSpotlightLeft] = useState(0);
@@ -454,7 +455,12 @@ const CourseIntro = () => {
             </svg>
           </div>
           <div className={styles.stepsContainer}>
-            <div className={styles.leftArrow}>
+            <div
+              className={styles.leftArrow}
+              onClick={() => {
+                spotlightRef.current.scrollLeft -= 300;
+              }}
+            >
               <svg
                 width="16"
                 height="16"
@@ -547,7 +553,12 @@ const CourseIntro = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.rightArrow}>
+            <div
+              className={styles.rightArrow}
+              onClick={() => {
+                spotlightRef.current.scrollLeft += 300;
+              }}
+            >
               <svg
                 width="16"
                 height="16"
@@ -969,161 +980,119 @@ const CourseIntro = () => {
         </div>
       </section>
 
-      <section className={`${styles.reviews} ${styles.container}`}>
-        <h3>Hear, what others have to say</h3>
-        <div className={styles.reviewsDiv}>
-          <div className={styles.review}>
-            <div className={styles.profile}>
-              <div>
-                <img src="/assets/reviewimg.png" alt="" />
-              </div>
-              <p>Jatin Pawar</p>
-            </div>
-            <div className={styles.reviewText}>
-              <svg
-                width="36"
-                height="27"
-                viewBox="0 0 36 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20.0625 23.625V8.5C20.0625 6.31196 20.9317 4.21354 22.4789 2.66637C24.026 1.11919 26.1245 0.25 28.3125 0.25C28.6772 0.25 29.0269 0.394865 29.2848 0.652727C29.5426 0.910589 29.6875 1.26033 29.6875 1.625C29.6875 1.98967 29.5426 2.33941 29.2848 2.59727C29.0269 2.85513 28.6772 3 28.3125 3C26.8552 3.00453 25.4589 3.58545 24.4284 4.61592C23.398 5.64639 22.817 7.0427 22.8125 8.5V9.875H33.125C33.8543 9.875 34.5538 10.1647 35.0695 10.6805C35.5853 11.1962 35.875 11.8957 35.875 12.625V23.625C35.875 24.3543 35.5853 25.0538 35.0695 25.5695C34.5538 26.0853 33.8543 26.375 33.125 26.375H22.8125C22.0832 26.375 21.3837 26.0853 20.868 25.5695C20.3522 25.0538 20.0625 24.3543 20.0625 23.625ZM2.875 26.375H13.1875C13.9168 26.375 14.6163 26.0853 15.132 25.5695C15.6478 25.0538 15.9375 24.3543 15.9375 23.625V12.625C15.9375 11.8957 15.6478 11.1962 15.132 10.6805C14.6163 10.1647 13.9168 9.875 13.1875 9.875H2.875V8.5C2.87953 7.0427 3.46045 5.64639 4.49092 4.61592C5.52139 3.58545 6.9177 3.00453 8.375 3C8.73967 3 9.08941 2.85513 9.34727 2.59727C9.60513 2.33941 9.75 1.98967 9.75 1.625C9.75 1.26033 9.60513 0.910589 9.34727 0.652727C9.08941 0.394865 8.73967 0.25 8.375 0.25C6.18696 0.25 4.08854 1.11919 2.54137 2.66637C0.994194 4.21354 0.125 6.31196 0.125 8.5V23.625C0.125 24.3543 0.41473 25.0538 0.930458 25.5695C1.44618 26.0853 2.14565 26.375 2.875 26.375Z"
-                  fill="#BBBBCC"
-                />
-              </svg>
-
-              <p>
-                I was surfing through internet for some opportnuties in Full
-                Stack Development, but was not able to get the idea to land on
-                one. And I found my skills to be a bit lacking. There I found
-                this webinar and I can proudly tell that I have not only
-                acquired my lagging skills but also backed up a much desired
-                internship.
-              </p>
-              <svg
-                width="36"
-                height="27"
-                viewBox="0 0 36 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15.9375 23.625V8.5C15.9375 6.31196 15.0683 4.21354 13.5211 2.66637C11.974 1.11919 9.87554 0.25 7.6875 0.25C7.32283 0.25 6.97309 0.394865 6.71523 0.652727C6.45737 0.910589 6.3125 1.26033 6.3125 1.625C6.3125 1.98967 6.45737 2.33941 6.71523 2.59727C6.97309 2.85513 7.32283 3 7.6875 3C9.1448 3.00453 10.5411 3.58545 11.5716 4.61592C12.602 5.64639 13.183 7.0427 13.1875 8.5V9.875H2.875C2.14565 9.875 1.44618 10.1647 0.930456 10.6805C0.414731 11.1962 0.125 11.8957 0.125 12.625V23.625C0.125 24.3543 0.414731 25.0538 0.930456 25.5695C1.44618 26.0853 2.14565 26.375 2.875 26.375H13.1875C13.9168 26.375 14.6163 26.0853 15.132 25.5695C15.6478 25.0538 15.9375 24.3543 15.9375 23.625ZM33.125 26.375H22.8125C22.0832 26.375 21.3837 26.0853 20.868 25.5695C20.3522 25.0538 20.0625 24.3543 20.0625 23.625V12.625C20.0625 11.8957 20.3522 11.1962 20.868 10.6805C21.3837 10.1647 22.0832 9.875 22.8125 9.875H33.125V8.5C33.1205 7.0427 32.5395 5.64639 31.5091 4.61592C30.4786 3.58545 29.0823 3.00453 27.625 3C27.2603 3 26.9106 2.85513 26.6527 2.59727C26.3949 2.33941 26.25 1.98967 26.25 1.625C26.25 1.26033 26.3949 0.910589 26.6527 0.652727C26.9106 0.394865 27.2603 0.25 27.625 0.25C29.813 0.25 31.9115 1.11919 33.4586 2.66637C35.0058 4.21354 35.875 6.31196 35.875 8.5V23.625C35.875 24.3543 35.5853 25.0538 35.0695 25.5695C34.5538 26.0853 33.8543 26.375 33.125 26.375Z"
-                  fill="#BBBBCC"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Reviews />
 
       <section className={`${styles.about} ${styles.container}`}>
         <h3>About this course</h3>
-        <p className={styles.intro}>
-          In this hands-on course, you will learn Python right starting from
-          scratch to the level where you can build almost anything with it, be
-          it a fully functional database oriented web application or an
-          automation tool. This course will teach you Python right from scratch
-          from a very basic level and will gradually move you towards more
-          advanced topics. We not just cover all the Python basics but also the
-          most popular Python libraries such as Django, Flask, Tkinter &
-          Selenium.
-        </p>
-        <p className={styles.details}>
-          <strong>
-            The Complete Course is divided into 11 Major sections.
-          </strong>
-          Here is a brief description of what you will learn in each section.
-          <strong>Section 1: Python</strong>
-          This section covers all the basics of Python, starting right from
-          installing the required tools to covering topics like mathematical
-          operators, strings, accepting user input, string operations,
-          variables, conditionals like if, elif, control structures such as
-          while & for loop, functions, modules & packages, lists, file handling,
-          OOP in Python, regular expressions. Almost every basic Python concept
-          is covered in this section.
-          <strong>Section 2: Make GUI In Python Using Tkinter</strong>
-          Once done with the basics, we know learn the Tkinter library which
-          allows us to create desktop based applications with Python. We learn
-          how to create GUI apps using Tkinter & Python and also build a fully
-          functional Desktop app i.e a calculator.
-          <strong>
-            Section 3: Making Database Oriented Desktop Apps With PostgreSQL
-          </strong>
-          Making a simple desktop app alone isn't sufficient, it needs a backend
-          database to store some data. To do the same we learn how to connect
-          our desktop apps to the backend. In this section we build a student
-          management system software using Python, Tkinter to design the GUI &
-          PostgreSQL database to store the data for our application in the
-          backend.
-          <strong>Section 4: Data Analysis</strong>
-          Python is being widely used in the data science domain and hence it is
-          important to learn how to use Python to analyse data. Hence in this
-          section we learn how to use the tools and techniques used to perform
-          data analysis. We start off by learning the Pandas library which is
-          used to perform data analysis and all the basic concepts like
-          DataFrames, Reindexing, Indexing, Broadcasting and also learn how to
-          perform data plotting and visualisation with the Matplotlib library.
-          <strong>Section 5: Python Web Framework Django</strong>
-          This section will teach you how to build full-stack web applications
-          with Python & Django. Django is one of the most popular web frameworks
-          for Python and is used to program the back-end side of out web app. In
-          this section we will learn Django right from basics and will build a
-          simple book store web application. We will learn how to create models,
-          how to route URL requests, how to create different views for our web
-          app, how to integrate HTML templates and a lot more.
-          <strong>Section 6: Python Web Framework Flask</strong>
-          Flask is a micro web framework for Python used to build simpler web
-          apps. If you want to develop some simple and small websites, you can
-          do so using Flask. In this section we cover flask basics suck as
-          Routing, Dynamic URLs, Templates, passing data to the server & site
-          cookies.
-          <strong>Section 7: REST APIs Using Django Rest Framework</strong>
-          In this section we learn how to build our own REST APIs using the
-          Django Rest Framework. If you already have a Django web app built, you
-          can create API endpoints for it using the Django Rest Framework. In
-          this section we will build a fully functional REST API with features
-          such as search, filtering & authentication.
-          <strong>Section 8: Web Scraping in Python</strong>
-          Python can also be used to crawl websites and gather data from it. In
-          this section we learn the same, we build a web crawler which crawls up
-          any website of our choice and gathers links from it. Web crawlers are
-          used by many search engines to rank websites and in this section we
-          learn how to build a smaller version of it using Python.
-          <strong>Section 9: Automation with Python & Selenium</strong>
-          Python is widely used for automation as well, especially for testing.
-          Selenium web driver is one such tool which has been built for
-          automating tests but the same can be used for automating other browser
-          based tasks as well. In this section we learn how to automate tasks
-          using Selenium and will also build a Facebook Bot that automatically
-          posts status for us.
-          <strong>
-            Section 10: Best Practices: Writing Clean & Efficient Python Code
-          </strong>
-          To be a good Python engineer/ developer you need to know how to write
-          clean, concise and efficient Python code. In this section we learn
-          some of the best practice that you must follow while writing Python
-          code so.
-          <strong>Section 11: Image Processing With Python & OpenCV</strong>
-          Python can also be used to process and manipulate images and videos.
-          In this section we learn how to use OpenCV library with Python to
-          manipulate images. We learn some interesting things like capturing
-          webcam video, tracking images from a live video, different image
-          thresholding techniques, image blurring, averaging and Gaussain
-          filtering.
-          <br />
-          <br />
-          So let's begin the journey of becoming an expert in Python. Make sure
-          to enrol in the course before the price changes. Take yourself one
-          step closer towards becoming a professional Python developer by
-          clicking the "take this course button" now!
-          <br />
-          Join the journey.
-          <br />
-          Sincerely, <br />
-          Krishanth M
-        </p>
+        <div className={styles.aboutDiv}>
+          <p className={styles.intro}>
+            In this hands-on course, you will learn Python right starting from
+            scratch to the level where you can build almost anything with it, be
+            it a fully functional database oriented web application or an
+            automation tool. This course will teach you Python right from
+            scratch from a very basic level and will gradually move you towards
+            more advanced topics. We not just cover all the Python basics but
+            also the most popular Python libraries such as Django, Flask,
+            Tkinter & Selenium.
+          </p>
+          <p className={styles.details}>
+            <strong>
+              The Complete Course is divided into 11 Major sections.
+            </strong>
+            Here is a brief description of what you will learn in each section.
+            <strong>Section 1: Python</strong>
+            This section covers all the basics of Python, starting right from
+            installing the required tools to covering topics like mathematical
+            operators, strings, accepting user input, string operations,
+            variables, conditionals like if, elif, control structures such as
+            while & for loop, functions, modules & packages, lists, file
+            handling, OOP in Python, regular expressions. Almost every basic
+            Python concept is covered in this section.
+            <strong>Section 2: Make GUI In Python Using Tkinter</strong>
+            Once done with the basics, we know learn the Tkinter library which
+            allows us to create desktop based applications with Python. We learn
+            how to create GUI apps using Tkinter & Python and also build a fully
+            functional Desktop app i.e a calculator.
+            <strong>
+              Section 3: Making Database Oriented Desktop Apps With PostgreSQL
+            </strong>
+            Making a simple desktop app alone isn't sufficient, it needs a
+            backend database to store some data. To do the same we learn how to
+            connect our desktop apps to the backend. In this section we build a
+            student management system software using Python, Tkinter to design
+            the GUI & PostgreSQL database to store the data for our application
+            in the backend.
+            <strong>Section 4: Data Analysis</strong>
+            Python is being widely used in the data science domain and hence it
+            is important to learn how to use Python to analyse data. Hence in
+            this section we learn how to use the tools and techniques used to
+            perform data analysis. We start off by learning the Pandas library
+            which is used to perform data analysis and all the basic concepts
+            like DataFrames, Reindexing, Indexing, Broadcasting and also learn
+            how to perform data plotting and visualisation with the Matplotlib
+            library.
+            <strong>Section 5: Python Web Framework Django</strong>
+            This section will teach you how to build full-stack web applications
+            with Python & Django. Django is one of the most popular web
+            frameworks for Python and is used to program the back-end side of
+            out web app. In this section we will learn Django right from basics
+            and will build a simple book store web application. We will learn
+            how to create models, how to route URL requests, how to create
+            different views for our web app, how to integrate HTML templates and
+            a lot more.
+            <strong>Section 6: Python Web Framework Flask</strong>
+            Flask is a micro web framework for Python used to build simpler web
+            apps. If you want to develop some simple and small websites, you can
+            do so using Flask. In this section we cover flask basics suck as
+            Routing, Dynamic URLs, Templates, passing data to the server & site
+            cookies.
+            <strong>Section 7: REST APIs Using Django Rest Framework</strong>
+            In this section we learn how to build our own REST APIs using the
+            Django Rest Framework. If you already have a Django web app built,
+            you can create API endpoints for it using the Django Rest Framework.
+            In this section we will build a fully functional REST API with
+            features such as search, filtering & authentication.
+            <strong>Section 8: Web Scraping in Python</strong>
+            Python can also be used to crawl websites and gather data from it.
+            In this section we learn the same, we build a web crawler which
+            crawls up any website of our choice and gathers links from it. Web
+            crawlers are used by many search engines to rank websites and in
+            this section we learn how to build a smaller version of it using
+            Python.
+            <strong>Section 9: Automation with Python & Selenium</strong>
+            Python is widely used for automation as well, especially for
+            testing. Selenium web driver is one such tool which has been built
+            for automating tests but the same can be used for automating other
+            browser based tasks as well. In this section we learn how to
+            automate tasks using Selenium and will also build a Facebook Bot
+            that automatically posts status for us.
+            <strong>
+              Section 10: Best Practices: Writing Clean & Efficient Python Code
+            </strong>
+            To be a good Python engineer/ developer you need to know how to
+            write clean, concise and efficient Python code. In this section we
+            learn some of the best practice that you must follow while writing
+            Python code so.
+            <strong>Section 11: Image Processing With Python & OpenCV</strong>
+            Python can also be used to process and manipulate images and videos.
+            In this section we learn how to use OpenCV library with Python to
+            manipulate images. We learn some interesting things like capturing
+            webcam video, tracking images from a live video, different image
+            thresholding techniques, image blurring, averaging and Gaussain
+            filtering.
+            <br />
+            <br />
+            So let's begin the journey of becoming an expert in Python. Make
+            sure to enrol in the course before the price changes. Take yourself
+            one step closer towards becoming a professional Python developer by
+            clicking the "take this course button" now!
+            <br />
+            Join the journey.
+            <br />
+            Sincerely, <br />
+            Krishanth M
+          </p>
+        </div>
       </section>
 
       <section className={`${styles.query} ${styles.container}`}>
